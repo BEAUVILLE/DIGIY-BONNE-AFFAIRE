@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>DIGIY BONNE AFFAIRE — Particulier à Particulier (0% Com)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="DIGIY BONNE AFFAIRE — Achat, Vente, Échange de particulier à particulier sans aucune commission.">
+
+    <style>
+        :root{
+            --bg:#020617;
+            --bg-soft:#020818;
+            --card:#030712;
+            --accent-main:#f97316; /* Orange Vif pour l'urgence/Affaire */
+            --accent-soft:#facc15; /* Jaune Or */
+            --accent-green:#22c55e; /* Vert Vif (0% Com) */
+            --ink:#f9fafb;
+            --muted:#cbd5f5;
+            --line:#1f2937;
+            --shadow-soft:0 20px 45px rgba(15,23,42,0.9);
+        }
+        *{
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+            font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;
+        }
+        body{
+            min-height:100vh;
+            background:
+                radial-gradient(circle at top,rgba(249,115,22,0.16),transparent 60%),
+                radial-gradient(circle at bottom,rgba(34,197,94,0.16),transparent 55%),
+                #020617;
+            color:var(--ink);
+            display:flex;
+            justify-content:center;
+            padding:10px;
+            font-size:16px;
+        }
+        .app{
+            width:100%;
+            max-width:1100px;
+            min-height:100vh;
+            background:linear-gradient(135deg,#020617 0%,#020818 50%,#020617 100%);
+            border-radius:24px;
+            border:1px solid rgba(148,163,184,0.25);
+            box-shadow:var(--shadow-soft);
+            padding:16px 16px 22px;
+            display:flex;
+            flex-direction:column;
+            position:relative;
+            overflow:hidden;
+        }
+        .app::before{
+            content:"";
+            position:absolute;
+            inset:-40%;
+            background:
+                radial-gradient(circle at 0% 0%,rgba(249,115,22,0.14),transparent 55%),
+                radial-gradient(circle at 100% 100%,rgba(34,197,94,0.14),transparent 45%);
+            opacity:0.8;
+            pointer-events:none;
+        }
+        header{
+            position:relative;
+            z-index:2;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:10px;
+            margin-bottom:12px;
+        }
+        .brand{
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+        .brand-logo{
+            width:42px;
+            height:42px;
+            border-radius:14px;
+            background:radial-gradient(circle at 30% 0%,#f97316,#ea580c);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:24px;
+            box-shadow:0 12px 30px rgba(249,115,22,0.65);
+        }
+        .brand-text-title{
+            font-size:20px;
+            font-weight:900;
+            letter-spacing:0.09em;
+            text-transform:uppercase;
+            color:var(--accent-main);
+        }
+        .brand-text-sub{
+            font-size:14px;
+            color:var(--muted);
+            font-weight:600;
+        }
+        .back-link{
+            font-size:13px;
+            color:var(--muted);
+            text-decoration:none;
+            background:rgba(15,23,42,0.9);
+            border-radius:999px;
+            border:1px solid rgba(148,163,184,0.6);
+            padding:8px 14px;
+            display:inline-flex;
+            align-items:center;
+            gap:6px;
+            z-index:2;
+            position:relative;
+            font-weight:700;
+        }
+
+        main{
+            position:relative;
+            z-index:2;
+            flex:1;
+            display:flex;
+            flex-direction:column;
+            gap:14px;
+        }
+
+        .hero{
+            background:radial-gradient(circle at top left,rgba(249,115,22,0.18),rgba(3,7,18,0.96));
+            border-radius:22px;
+            border:1px solid rgba(148,163,184,0.6);
+            padding:16px 16px 14px;
+            box-shadow:0 18px 44px rgba(15,23,42,0.95);
+            display:flex;
+            flex-direction:column;
+            gap:8px;
+        }
+        .hero-title{
+            font-size:26px;
+            font-weight:900;
+            color:var(--accent-main);
+        }
+        .hero-title span{
+             color:var(--accent-green);
+        }
+        .hero-sub{
+            font-size:16px;
+            color:#e5e7eb;
+            max-width:620px;
+            font-weight:500;
+            line-height:1.6;
+        }
+        .hero-sub strong{
+            font-weight:800;
+            color:var(--accent-green);
+        }
+        .hero-tags{
+            display:flex;
+            flex-wrap:wrap;
+            gap:7px;
+            margin-top:4px;
+        }
+        .hero-tag{
+            font-size:13px;
+            padding:5px 11px;
+            border-radius:999px;
+            border:1px solid rgba(148,163,184,0.7);
+            background:rgba(15,23,42,0.95);
+            color:#e5e7eb;
+            font-weight:600;
+        }
+        .hero-tag strong{
+            color:var(--accent-main);
+            font-weight:800;
+        }
+
+        /* CTA Hero */
+        .hero-cta-row{
+            margin-top:10px;
+            display:flex;
+            flex-wrap:wrap;
+            gap:8px;
+        }
+        .hero-cta-btn{
+            border:none;
+            border-radius:999px;
+            padding:10px 16px;
+            font-size:14px;
+            font-weight:900;
+            cursor:pointer;
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            text-decoration:none;
+            white-space:nowrap;
+            background:linear-gradient(135deg,#f97316,#ea580c);
+            color:#111827;
+            box-shadow:0 7px 18px rgba(249,115,22,0.55);
+        }
+        .hero-cta-btn:hover{
+            transform:translateY(-1px);
+            box-shadow:0 11px 26px rgba(249,115,22,0.7);
+        }
+        .hero-cta-btn-secondary{
+            border-radius:999px;
+            padding:10px 16px;
+            font-size:13px;
+            font-weight:700;
+            text-decoration:none;
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            cursor:pointer;
+            background:rgba(15,23,42,0.98);
+            color:#e5e7eb;
+            border:1px solid rgba(148,163,184,0.8);
+        }
+        .hero-cta-btn-secondary:hover{
+            border-color:var(--accent-main);
+        }
+
+        /* SECTION PRICING PRO */
+        .pricing{
+            margin-top:16px;
+            background:radial-gradient(circle at top right,rgba(34,197,94,0.12),rgba(3,7,18,0.98));
+            border-radius:22px;
+            border:1px solid rgba(148,163,184,0.7);
+            padding:14px 14px 16px;
+            box-shadow:0 16px 38px rgba(15,23,42,0.9);
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+        }
+        .pricing-header{
+            display:flex;
+            flex-direction:column;
+            gap:4px;
+        }
+        .pricing-title{
+            font-size:20px;
+            font-weight:900;
+            color:var(--accent-soft);
+        }
+        .pricing-sub{
+            font-size:14px;
+            color:#e5e7eb;
+            max-width:620px;
+            line-height:1.5;
+        }
+        .pricing-sub strong{
+            color:var(--accent-main);
+            font-weight:800;
+        }
+        .pricing-grid{
+            margin-top:8px;
+            display:grid;
+            grid-template-columns:repeat(3,minmax(0,1fr));
+            gap:10px;
+        }
+        @media(max-width:900px){
+            .pricing-grid{
+                grid-template-columns:repeat(2,minmax(0,1fr));
+            }
+        }
+        @media(max-width:640px){
+            .pricing-grid{
+                grid-template-columns:1fr;
+            }
+        }
+        .pricing-card{
+            position:relative;
+            background:radial-gradient(circle at top,rgba(15,23,42,0.98),#020617);
+            border-radius:18px;
+            border:1px solid rgba(148,163,184,0.75);
+            padding:12px 12px 14px;
+            display:flex;
+            flex-direction:column;
+            gap:6px;
+            box-shadow:0 12px 30px rgba(15,23,42,0.9);
+        }
+        .pricing-card.highlight{
+            border-color:var(--accent-main);
+            box-shadow:0 16px 40px rgba(249,115,22,0.6);
+        }
+        .pricing-badge{
+            font-size:11px;
+            align-self:flex-start;
+            padding:3px 9px;
+            border-radius:999px;
+            background:rgba(15,23,42,0.98);
+            border:1px solid rgba(148,163,184,0.8);
+            color:var(--muted);
+            font-weight:700;
+            text-transform:uppercase;
+            letter-spacing:0.06em;
+        }
+        .pricing-card.highlight .pricing-badge{
+            border-color:var(--accent-main);
+            color:var(--accent-main);
+        }
+        .pricing-name{
+            font-size:17px;
+            font-weight:800;
+            color:var(--accent-soft);
+        }
+        .pricing-price{
+            font-size:22px;
+            font-weight:900;
+            color:var(--accent-green);
+        }
+        .pricing-price span{
+            font-size:12px;
+            font-weight:600;
+            color:var(--muted);
+            margin-left:4px;
+        }
+        .pricing-line{
+            font-size:13px;
+            color:#e5e7eb;
+            display:flex;
+            align-items:flex-start;
+            gap:5px;
+            margin-top:2px;
+        }
+        .pricing-line::before{
+            content:"•";
+            color:var(--accent-main);
+            margin-top:1px;
+        }
+        .pricing-cta{
+            margin-top:8px;
+            display:flex;
+            gap:6px;
+            flex-wrap:wrap;
+        }
+
+        /* --- CARDS & GRID ANNONCES --- */
+
+        .grid{
+            margin-top:14px;
+            display:grid;
+            grid-template-columns:repeat(3,minmax(0,1fr));
+            gap:14px;
+        }
+        @media(max-width:900px){
+            .grid{
+                grid-template-columns:repeat(2,minmax(0,1fr));
+            }
+        }
+        @media(max-width:640px){
+            .app{
+                border-radius:0;
+                border:none;
+                box-shadow:none;
+            }
+            .grid{
+                grid-template-columns:1fr;
+                gap:20px;
+            }
+        }
+
+        .shop-card{
+            background:radial-gradient(circle at top,rgba(15,23,42,0.98),#020617);
+            border-radius:24px;
+            border:1px solid rgba(148,163,184,0.7);
+            padding:12px 12px 14px;
+            box-shadow:0 14px 34px rgba(15,23,42,0.95);
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+            position:relative;
+            overflow:hidden;
+        }
+        .shop-card::before{
+            content:"";
+            position:absolute;
+            inset:-40%;
+            background:radial-gradient(circle at top,rgba(249,115,22,0.08),transparent 55%);
+            opacity:0.8;
+            pointer-events:none;
+        }
+        .shop-head{
+            position:relative;
+            z-index:2;
+            display:flex;
+            justify-content:space-between;
+            align-items:flex-start;
+            gap:8px;
+        }
+        .shop-name{
+            font-size:22px;
+            font-weight:900;
+            color:var(--accent-main);
+        }
+        .shop-type{
+            font-size:15px;
+            color:var(--accent-soft);
+            font-weight:600;
+        }
+        .shop-price{
+            font-size:24px;
+            font-weight:900;
+            color:var(--accent-green);
+        }
+        .shop-badge{
+            font-size:12px;
+            padding:5px 9px;
+            border-radius:999px;
+            border:1px solid rgba(34,197,94,0.9);
+            color:var(--accent-green);
+            background:rgba(15,23,42,0.98);
+            white-space:nowrap;
+            font-weight:700;
+        }
+        .shop-body{
+            position:relative;
+            z-index:2;
+            display:flex;
+            flex-direction:column;
+            gap:8px;
+        }
+        .shop-desc{
+            font-size:15px;
+            color:#f3f4f6;
+            font-weight:500;
+            line-height:1.6;
+        }
+        .shop-photo{
+            margin-top:0px;
+            border-radius:16px;
+            overflow:hidden;
+            max-height:220px;
+            height:220px;
+            border:2px solid rgba(249,115,22,0.85);
+            order:-1;
+        }
+        .shop-photo img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            display:block;
+        }
+        .shop-meta{
+            margin-top:6px;
+            font-size:14px;
+            color:#e5e7eb;
+            font-weight:500;
+            display:flex;
+            justify-content:space-between;
+        }
+
+        .shop-actions{
+            margin-top:10px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:10px;
+            font-size:11px;
+            color:var(--muted);
+            flex-wrap:wrap;
+        }
+        .btn{
+            border:none;
+            border-radius:999px;
+            padding:10px 14px;
+            font-size:14px;
+            font-weight:900;
+            cursor:pointer;
+            display:inline-flex;
+            align-items:center;
+            gap:6px;
+            text-decoration:none;
+            white-space:nowrap;
+            transition:all 0.25s;
+            flex-grow:1;
+            justify-content:center;
+        }
+        .btn-contact{
+            background:linear-gradient(135deg,#f97316,#ea580c);
+            color:#111827;
+            box-shadow:0 7px 18px rgba(249,115,22,0.55);
+        }
+        .btn-contact:hover{
+            transform:translateY(-1px);
+            box-shadow:0 11px 26px rgba(249,115,22,0.7);
+        }
+        .btn-call{
+            background:rgba(34,197,94,0.2);
+            color:#bbf7d0;
+            border:1px solid rgba(34,197,94,0.85);
+        }
+        .btn-call:hover{
+            border-color:#22c55e;
+        }
+
+        /* Boutons pricing */
+        .btn-pricing-main{
+            background:linear-gradient(135deg,#f97316,#ea580c);
+            color:#111827;
+            box-shadow:0 6px 16px rgba(249,115,22,0.55);
+            font-size:13px;
+        }
+        .btn-pricing-outline{
+            background:rgba(15,23,42,0.98);
+            color:#e5e7eb;
+            border:1px solid rgba(148,163,184,0.9);
+            font-size:12px;
+        }
+
+        footer{
+            position:relative;
+            z-index:2;
+            margin-top:16px;
+            font-size:12px;
+            color:var(--muted);
+            display:flex;
+            justify-content:space-between;
+            flex-wrap:wrap;
+            gap:6px;
+            font-weight:600;
+            line-height:1.4;
+        }
+        footer span{
+            color:var(--accent-main);
+            font-weight:800;
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <header>
+        <div class="brand">
+            <div class="brand-logo">💰</div>
+            <div>
+                <div class="brand-text-title">DIGIY BONNE AFFAIRE</div>
+                <div class="brand-text-sub">PàP: Vente, Échange, Occasion</div>
+            </div>
+        </div>
+
+        <!-- Retour HUB -->
+        <a href="https://beauville.github.io/mon-espace-digiy/" class="back-link">
+            <span>←</span> Retour DIGIY HUB
+        </a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-title">
+                DIGIY BONNE AFFAIRE <span>0% Commission</span>
+            </div>
+            <div class="hero-sub">
+                Achetez et vendez entre particuliers :
+                <strong>Voitures, Terrains, Objets, Services</strong>.
+                Contactez le vendeur <strong>directement</strong> via WhatsApp ou Appel.
+            </div>
+            <div class="hero-tags">
+                <div class="hero-tag"><strong>0% commission</strong> — PàP</div>
+                <div class="hero-tag">Annonces V.O. vérifiées</div>
+                <div class="hero-tag">Paiement direct au vendeur</div>
+                <div class="hero-tag">Voitures et biens immobiliers</div>
+            </div>
+
+            <!-- CTA Particulier + PRO -->
+            <div class="hero-cta-row">
+                <!-- Particulier : par annonce (WhatsApp pour l’instant) -->
+                <a href="https://wa.me/221771342889?text=Bonjour%20DIGIY,%20je%20veux%20poser%20une%20annonce%20(PARTICULIER)%20sur%20BONNE%20AFFAIRE."
+                   target="_blank" rel="noopener"
+                   class="hero-cta-btn">
+                    ✍️ Poser une annonce (Particulier)
+                </a>
+
+                <!-- PRO / Agence : scroll vers section abonnements -->
+                <a href="#section-pro" class="hero-cta-btn-secondary">
+                    🧰 Je suis PRO / Agence (abonnements)
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION ABONNEMENTS PRO -->
+        <section class="pricing" id="section-pro">
+            <div class="pricing-header">
+                <div class="pricing-title">Abonnements DIGIY BONNE AFFAIRE PRO</div>
+                <p class="pricing-sub">
+                    Pour les vendeurs réguliers (autos, terrains, agences, pros) :
+                    choisis ton pack mensuel. <strong>0% commission</strong> sur les ventes,
+                    tu paies seulement ton abonnement.
+                </p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Pack 1 : 9 900 -->
+                <article class="pricing-card">
+                    <div class="pricing-badge">STARTER</div>
+                    <div class="pricing-name">Pack Découverte</div>
+                    <div class="pricing-price">
+                        9 900 F CFA <span>/ mois</span>
+                    </div>
+                    <div class="pricing-line">Jusqu’à 10 annonces actives en même temps.</div>
+                    <div class="pricing-line">Mise en avant simple dans la liste.</div>
+                    <div class="pricing-line">0% de commission sur tes ventes.</div>
+                    <div class="pricing-line">Support WhatsApp en horaires ouvrables.</div>
+                    <div class="pricing-cta">
+                        <a href="https://beauville.github.io/inscription-digiy/?module=bonne_affaire&plan=starter"
+                           class="btn btn-pricing-main">
+                            📲 Démarrer à 9 900 F
+                        </a>
+                        <a href="https://wa.me/221771342889?text=Bonjour%20DIGIY,%20je%20veux%20plus%20de%20d%C3%A9tails%20sur%20le%20Pack%20D%C3%A9couverte%20BONNE%20AFFAIRE."
+                           target="_blank" rel="noopener"
+                           class="btn btn-pricing-outline">
+                            Voir plus de détails
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Pack 2 : 20 000 -->
+                <article class="pricing-card highlight">
+                    <div class="pricing-badge">LE PLUS CHOISI</div>
+                    <div class="pricing-name">Pack Business</div>
+                    <div class="pricing-price">
+                        20 000 F CFA <span>/ mois</span>
+                    </div>
+                    <div class="pricing-line">Jusqu’à 30 annonces actives.</div>
+                    <div class="pricing-line">3 annonces boostées / mois (remontée régulière).</div>
+                    <div class="pricing-line">Badge “Vendeur de Confiance DIGIY”.</div>
+                    <div class="pricing-line">Statistiques simples (vues / clics WhatsApp).</div>
+                    <div class="pricing-cta">
+                        <a href="https://beauville.github.io/inscription-digiy/?module=bonne_affaire&plan=business"
+                           class="btn btn-pricing-main">
+                            🚀 Passer en Business (20 000 F)
+                        </a>
+                        <a href="https://wa.me/221771342889?text=Bonjour%20DIGIY,%20je%20veux%20plus%20de%20d%C3%A9tails%20sur%20le%20Pack%20Business%20BONNE%20AFFAIRE."
+                           target="_blank" rel="noopener"
+                           class="btn btn-pricing-outline">
+                            Contacter l’équipe DIGIY
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Pack 3 : 28 000 -->
+                <article class="pricing-card">
+                    <div class="pricing-badge">PREMIUM</div>
+                    <div class="pricing-name">Pack Expert</div>
+                    <div class="pricing-price">
+                        28 000 F CFA <span>/ mois</span>
+                    </div>
+                    <div class="pricing-line">Annonces illimitées sur le mois.</div>
+                    <div class="pricing-line">Mise en avant continue pour tes meilleures offres.</div>
+                    <div class="pricing-line">Présence prioritaire sur la page locale.</div>
+                    <div class="pricing-line">Badge “Boutique Premium DIGIY”.</div>
+                    <div class="pricing-line">Support prioritaire + ajustement personnalisé.</div>
+                    <div class="pricing-cta">
+                        <a href="https://beauville.github.io/inscription-digiy/?module=bonne_affaire&plan=premium"
+                           class="btn btn-pricing-main">
+                            👑 Devenir Premium (28 000 F)
+                        </a>
+                        <a href="https://wa.me/221771342889?text=Bonjour%20DIGIY,%20je%20veux%20plus%20de%20d%C3%A9tails%20sur%20le%20Pack%20Premium%20BONNE%20AFFAIRE."
+                           target="_blank" rel="noopener"
+                           class="btn btn-pricing-outline">
+                            Parler à un conseiller
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ANNONCES EXISTANTES -->
+        <section class="grid">
+
+            <article class="shop-card">
+                <div class="shop-head">
+                    <div>
+                        <div class="shop-name">Terrain Titré 300m²</div>
+                        <div class="shop-type">Immobilier • Saly Nord</div>
+                    </div>
+                    <div class="shop-price">15.000.000 XOF</div>
+                </div>
+                <div class="shop-body">
+                    <div class="shop-photo">
+                        <img src="https://images.unsplash.com/photo-1549488344-ec853f58a5e3?auto=format&fit=crop&w=800&q=80"
+                            alt="Parcelle de terrain délimitée sous le soleil">
+                    </div>
+                    <p class="shop-desc">
+                        Parcelle de 300 m² dans une zone en forte expansion à Saly Nord.
+                        Titre foncier individuel disponible. Accès facile à la route nationale.
+                    </p>
+                    <div class="shop-meta">
+                        <span>Publié il y a 2 jours</span>
+                        <div class="shop-badge">0% Com DIGIY</div>
+                    </div>
+                    <div class="shop-actions">
+                        <a class="btn btn-contact"
+                            href="https://wa.me/221770001122?text=Bonjour,%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20Terrain%20de%20300m%C2%B2%20(DIGIY%20BONNE%20AFFAIRE)."
+                            target="_blank" rel="noopener">
+                            💬 Contacter Vendeur (WhatsApp)
+                        </a>
+                        <a class="btn btn-call" href="tel:+221770001122">
+                            📞 Appeler le Propriétaire
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="shop-card">
+                <div class="shop-head">
+                    <div>
+                        <div class="shop-name">Toyota Corolla 2018</div>
+                        <div class="shop-type">Véhicule • Berline • Dakar</div>
+                    </div>
+                    <div class="shop-price">7.200.000 XOF</div>
+                </div>
+                <div class="shop-body">
+                     <div class="shop-photo">
+                        <img src="https://images.unsplash.com/photo-1583091000699-b1d03c62174c?auto=format&fit=crop&w=800&q=80"
+                            alt="Voiture berline Toyota Corolla grise">
+                    </div>
+                    <p class="shop-desc">
+                        Très bon état général, climatisation fonctionnelle, faible kilométrage
+                        (75 000 km). Toutes options. Papiers à jour.
+                    </p>
+                    <div class="shop-meta">
+                        <span>Mise en ligne aujourd'hui</span>
+                        <div class="shop-badge">0% Com DIGIY</div>
+                    </div>
+                    <div class="shop-actions">
+                        <a class="btn btn-contact"
+                            href="https://wa.me/221771112233?text=Bonjour,%20je%20suis%20int%C3%A9ress%C3%A9%20par%20la%20Toyota%20Corolla%202018%20(DIGIY%20BONNE%20AFFAIRE)."
+                            target="_blank" rel="noopener">
+                            💬 Contacter Vendeur (WhatsApp)
+                        </a>
+                        <a class="btn btn-call" href="tel:+221771112233">
+                            📞 Appeler le Propriétaire
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="shop-card">
+                <div class="shop-head">
+                    <div>
+                        <div class="shop-name">Moto Scooter Neuf</div>
+                        <div class="shop-type">Deux Roues • 125cc • Thiès</div>
+                    </div>
+                    <div class="shop-price">450.000 XOF</div>
+                </div>
+                <div class="shop-body">
+                    <div class="shop-photo">
+                        <img src="https://images.unsplash.com/photo-1558981403-c5f9899a280b?auto=format&fit=crop&w=800&q=80"
+                            alt="Moto scooter noir garée en ville">
+                    </div>
+                    <p class="shop-desc">
+                        Scooter de marque YAMAHA 125cc. Moins de 1000 km, état neuf.
+                        Échange possible contre une petite voiture avec rajout.
+                    </p>
+                    <div class="shop-meta">
+                        <span>Annonce vérifiée</span>
+                        <div class="shop-badge">0% Com DIGIY</div>
+                    </div>
+                    <div class="shop-actions">
+                        <a class="btn btn-contact"
+                            href="https://wa.me/221772223344?text=Bonjour,%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20Scooter%20125cc%20(DIGIY%20BONNE%20AFFAIRE)."
+                            target="_blank" rel="noopener">
+                            💬 Contacter le Vendeur (WhatsApp)
+                        </a>
+                        <a class="btn btn-call" href="tel:+221772223344">
+                            📞 Appeler le Propriétaire
+                        </a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="shop-card">
+                <div class="shop-head">
+                    <div>
+                        <div class="shop-name">Terrain 150m² Viabilisé</div>
+                        <div class="shop-type">Immobilier • Mbour Centre</div>
+                    </div>
+                    <div class="shop-price">4.500.000 XOF</div>
+                </div>
+                <div class="shop-body">
+                     <div class="shop-photo">
+                        <img src="https://images.unsplash.com/photo-1516245258810-b91b5c2d1b7d?auto=format&fit=crop&w=800&q=80"
+                            alt="Vue aérienne de parcelles de construction">
+                    </div>
+                    <p class="shop-desc">
+                        Petite parcelle idéale pour maison de ville. Eau et électricité à proximité.
+                        Zone déjà habitée. Prix négociable.
+                    </p>
+                    <div class="shop-meta">
+                        <span>Urgent !</span>
+                        <div class="shop-badge">0% Com DIGIY</div>
+                    </div>
+                    <div class="shop-actions">
+                        <a class="btn btn-contact"
+                            href="https://wa.me/221773334455?text=Bonjour,%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20Terrain%20de%20150m%C2%B2%20%C3%A0%20Mbour%20(DIGIY%20BONNE%20AFFAIRE)."
+                            target="_blank" rel="noopener">
+                            💬 Contacter le Vendeur (WhatsApp)
+                        </a>
+                        <a class="btn btn-call" href="tel:+221773334455">
+                            📞 Appeler le Propriétaire
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="shop-card">
+                <div class="shop-head">
+                    <div>
+                        <div class="shop-name">Peugeot 206</div>
+                        <div class="shop-type">Véhicule • Citadine • Vendu en l'état</div>
+                    </div>
+                    <div class="shop-price">900.000 XOF</div>
+                </div>
+                <div class="shop-body">
+                    <div class="shop-photo">
+                        <img src="https://images.unsplash.com/photo-1532581622352-78b6630f5a43?auto=format&fit=crop&w=800&q=80"
+                            alt="Petite voiture citadine rouge">
+                    </div>
+                    <p class="shop-desc">
+                        Voiture ancienne, fiable pour la ville. Quelques retouches de carrosserie
+                        à prévoir. Idéale pour jeune conducteur ou livraison.
+                    </p>
+                    <div class="shop-meta">
+                        <span>Faible consommation</span>
+                        <div class="shop-badge">0% Com DIGIY</div>
+                    </div>
+                    <div class="shop-actions">
+                        <a class="btn btn-contact"
+                            href="https://wa.me/221774445566?text=Bonjour,%20je%20suis%20int%C3%A9ress%C3%A9%20par%20la%20Peugeot%20206%20(DIGIY%20BONNE%20AFFAIRE)."
+                            target="_blank" rel="noopener">
+                            💬 Contacter le Vendeur (WhatsApp)
+                        </a>
+                        <a class="btn btn-call" href="tel:+221774445566">
+                            📞 Appeler le Vendeur
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="shop-card">
+                <div class="shop-head">
+                    <div>
+                        <div class="shop-name">Lot Matériel Hôtelier</div>
+                        <div class="shop-type">Équipement Pro • Tout Dakar</div>
+                    </div>
+                    <div class="shop-price">3.500.000 XOF (Négociable)</div>
+                </div>
+                <div class="shop-body">
+                    <div class="shop-photo">
+                        <img src="https://images.unsplash.com/photo-1556910651-789a77764f69?auto=format&fit=crop&w=800&q=80"
+                            alt="Équipement de cuisine professionnelle en inox">
+                    </div>
+                    <p class="shop-desc">
+                        Cède un lot complet (four, frigo, ustensiles, tables) suite à la fermeture
+                        d'un restaurant. Équipement en très bon état.
+                    </p>
+                    <div class="shop-meta">
+                        <span>Échange possible contre voiture</span>
+                        <div class="shop-badge">0% Com DIGIY</div>
+                    </div>
+                    <div class="shop-actions">
+                        <a class="btn btn-contact"
+                            href="https://wa.me/221775556677?text=Bonjour,%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20Lot%20Mat%C3%A9riel%20H%C3%B4telier%20(DIGIY%20BONNE%20AFFAIRE)."
+                            target="_blank" rel="noopener">
+                            💬 Contacter le Vendeur (WhatsApp)
+                        </a>
+                        <a class="btn btn-call" href="tel:+221775556677">
+                            📞 Appeler le Vendeur
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <footer>
+        <div>DIGIY BONNE AFFAIRE • <span>Super App DIGIYLYFE</span> — Sénégal → Afrique</div>
+        <div>Transactions PàP sans commission • Vos annonces en ligne directement.</div>
+        <div style="width:100%; margin-top:4px; font-size:11px; color:#a8b1c2;">
+            DIGIYLYFE met seulement en relation vendeurs et acheteurs. Vérifiez documents et état des biens avant tout paiement.
+        </div>
+    </footer>
+</div>
+
+<script>
+    function openWa(phone, message){
+        const txt = encodeURIComponent(message || "");
+        const clean = phone.replace(/\s+/g,"");
+        window.open(
+            "https://wa.me/" + clean.replace("+","") + (txt ? ("?text=" + txt) : ""),
+            "_blank"
+        );
+    }
+</script>
+</body>
+</html>
