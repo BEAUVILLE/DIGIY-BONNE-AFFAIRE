@@ -1,0 +1,140 @@
+# DIGIY BONNE AFFAIRE — Particulier à Particulier (0% Commission)
+
+DIGIY BONNE AFFAIRE est la vitrine officielle de l’écosystème **DIGIYLYFE**, dédiée aux annonces entre particuliers et vendeurs professionnels.
+
+Achetez, vendez, échangez :  
+- **Voitures**  
+- **Terrains & immobilier**  
+- **Scooters et équipements**  
+- **Matériel professionnel**  
+- **Objets d'occasion**
+
+Avec un principe simple :  
+## 🎯 Paiement direct entre vendeur et acheteur — **DIGIY ne prend **0% de commission**.
+
+---
+
+## 🚀 Fonctionnalités
+
+### 👥 Pour les particuliers
+- Publier une annonce à l’unité (ticket simple)  
+- Contact direct par WhatsApp ou Appel  
+- Mise en avant de l’annonce pendant 30 jours  
+- Parfait pour vendre un véhicule, un terrain, un appareil ou tout objet ponctuel
+
+### 🧰 Pour les professionnels (autos, agences, marchands, pros)
+Abonnements mensuels :
+
+- **Starter — 9 900 F / mois**  
+  Jusqu’à 10 annonces + mise en avant simple
+
+- **Business — 20 000 F / mois**  
+  Jusqu’à 30 annonces + 3 annonces boostées / mois + badge Vendeur Confiance
+
+- **Premium — 28 000 F / mois**  
+  Annonces illimitées + priorité + badge Boutique Premium
+
+Les PRO profitent d’une vitrine DIGIY, d’un badge de confiance et d’un trafic continu venant de DIGIYLYFE.
+
+---
+
+## 🧱 Structure du projet
+
+Ce dépôt contient une page **HTML statique** :
+
+- `index.html` → page principale DIGIY BONNE AFFAIRE  
+  - Hero + présentation
+  - Boutons “Déposer une annonce (Particulier)” et “Je suis PRO”
+  - Section Abonnements PRO
+  - Exemples d’annonces (cartes)
+  - Boutons contact WhatsApp / Appel
+  - Footer DIGIYLYFE
+
+Aucun backend n’est requis pour cette page.  
+Elle peut être intégrée dans DIGIY HUB ou dans n’importe quel site DIGIY.
+
+---
+
+## 🌍 Déployer sur GitHub Pages
+
+1. Cloner le repo :
+
+```bash
+git clone https://github.com/<ton-repo>/digiy-bonne-affaire.git
+cd digiy-bonne-affaire
+Vérifier que index.html fonctionne en local
+
+Pousser sur GitHub :
+
+bash
+Copier le code
+git add .
+git commit -m "Initial DIGIY BONNE AFFAIRE"
+git push origin main
+Activer GitHub Pages :
+
+Settings → Pages
+
+Source : Deploy from branch
+
+Branch : main / root
+
+Sauvegarder
+
+GitHub génère ensuite une URL publique :
+
+arduino
+Copier le code
+https://<ton-pseudo>.github.io/digiy-bonne-affaire/
+Cette URL peut être intégrée :
+
+dans DIGIY HUB
+
+sur digiylyfe.com
+
+partagée aux utilisateurs
+
+🔧 Personnalisation
+Modifier les boutons
+Les liens suivants peuvent être adaptés :
+
+Inscription PRO →
+https://beauville.github.io/inscription-digiy/?module=bonne_affaire&plan=starter
+
+Annonce Particulier →
+https://wa.me/221771342889?text=Bonjour%20DIGIY,%20je%20veux%20poser%20une%20annonce%20(Bonne%20Affaire).
+
+Modifier les numéros WhatsApp
+Changer directement dans les href="https://wa.me/..." dans les blocs annonces.
+
+Modifier les annonces
+Localiser les <article class="shop-card"> dans index.html.
+
+⚠️ Disclaimer (Protection DIGIY)
+DIGIYLYFE facilite la mise en relation.
+Chaque utilisateur doit vérifier l’état du bien, les papiers et les modalités de paiement.
+Ne jamais payer sans garantie.
+
+🦅 DIGIYLYFE — Super App Africaine 0% Commission
+DIGIY BONNE AFFAIRE fait partie de l’écosystème :
+
+DIGIY DRIVER
+
+DIGIY LOC
+
+DIGIY RESTO
+
+DIGIY MARKET
+
+DIGIY JOBS
+
+DIGIY STORE PRO
+
+DIGIY PAY
+
+DIGIY HUB
+
+DIGIYLYFE — L’aigle qui survole toutes les apps.
+
+yaml
+Copier le code
